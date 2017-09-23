@@ -7,7 +7,7 @@ var app = express()
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true, })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useMongoClient: true, })
 // add body-parser to app (after initializing above)
 app.use(bodyParser.urlencoded({ extended: true }))
 // override with POST having ?_method=DELETE or ?_method=PUT
